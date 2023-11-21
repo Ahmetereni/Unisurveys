@@ -3,6 +3,19 @@ conda install pytorch
 //--debug
 flask --app application run 
 
+//deploy
+gunicorn "application:create_app()" -b 0.0.0.0:8000
+sudo systemctl daemon-reload
+sudo systemctl start helloworld.service
+sudo systemctl enable helloworld.service
+sudo apt-get install nginx
+sudo systemctl start nginx
+sudo systemctl enable nginx
+sudo vim /etc/nginx/sites-available/default
+sudo systemctl restart nginx
+
+
+
 
 //haystack
 git clone https://github.com/deepset-ai/haystack.git

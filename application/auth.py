@@ -7,7 +7,6 @@ from . import db
 from functools import wraps
 from flask import make_response
 
-
 auth = Blueprint('auth', __name__)
 
 

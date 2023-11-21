@@ -59,14 +59,19 @@ def receive_form():
     data = request.form
     country = data['countrySelect']
     university = data['universitySelect']
-   
+    year=data['yearSelect']
+    department=data['departmentSelect']
+    
     answers = {key[6:]: data[key] for key in data if key.startswith('slider')}
 
     document = {
         "country": country,
         "university": university,
+        "department":department,
+        "year":year,
         "email": email,  # Include email in the document
-        "answers": answers
+        "answers": answers,
+        
     }
 
     try:
