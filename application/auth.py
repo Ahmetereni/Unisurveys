@@ -6,7 +6,6 @@ from .models import User
 from . import db
 from functools import wraps
 from flask import make_response
-import random
 
 
 auth = Blueprint('auth', __name__)
@@ -36,7 +35,7 @@ def login_post():
     login_user(user, remember=remember)
     
     str_username = str(user.email)
-    session["email"] = "".join(random.sample(str_username,len(str_username)))
+    session["email"] = "".join(str_username)
     return redirect(url_for('main.survey'))
 
 

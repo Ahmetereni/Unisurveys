@@ -81,7 +81,7 @@ def receive_form():
         print(f"An error occurred: {e}")
         return "Error updating/inserting data into MongoDB", 500
 
-    return redirect(url_for('main.index'))
+    return redirect(url_for('main.stats'))
 
 
 
