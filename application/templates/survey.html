@@ -1,0 +1,89 @@
+<!-- templates/yedek.html -->
+{% extends "base.html" %}
+{% block content %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>Select University</title>
+  <script src="{{ url_for('static', filename='js/Uniparser.js')}}"></script>
+  <script src="{{ url_for('static', filename='js/QuestionPopulator.js')}}"></script>
+
+  <script src="{{ url_for('static', filename='css/style.css')}}"></script>
+</head>
+
+<body>
+  <form action="/myform" method=post enctype=multipart/form-data class="section is-fullheight">
+    <div class="columns is-centered">
+      <div class="column is-half">
+        <div class="field">
+          <label class="card-header" style="box-shadow: none;"  for="countrySelect">Select Country:</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select id="countrySelect" name="countrySelect" onchange="updateUniversityDropdown()">
+                <!-- options go here -->
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="card-header" style="box-shadow: none;"  for="universitySelect">Select University:</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select id="universitySelect" name="universitySelect">
+                <!-- options go here -->
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <div id="questions-container">
+      <!-- JavaScript will populate this -->
+    </div>
+<br>
+    <input class="button is-block is-info is-large is-fullwidth" type=submit value=Submit>
+
+  </form>
+  <script>
+    const questions = ["Quality of academic staff", "Research and Publications", "International Partnerships (ERASMUS)", "Academic Programs", "University Student Success", "International and National Rankings", "Alumni Network (Graduate Network)", "Scholarships and Grants", "Social Activities and Clubs", "Start-up and Innovation Centers", "Accommodation", "Social Environment of Students", "Internship Opportunities", "Competitions and Awards", "Accessibility for Disabled", "Balance of Theoretical and Practical Knowledge", "In-school Communication. Receiving exam announcements and event announcements, etc.", "Contributing on Schools academic projects", "Project Support or Patent Support of the School", "The School's Support for You in Career Planning", "Transportation to Campus", "School Library", "Labs", "Sport Centers", "Quality of the Region Where the Campus is Located"];
+    const questionsContainer = document.getElementById('questions-container');
+
+    for (let i = 0; i < questions.length; i++) {
+
+      const questionDiv = document.createElement('div');
+      questionDiv.className = 'box';
+
+      const questionText = document.createElement('div');
+      questionText.className = 'question-text';
+
+      questionText.innerText = `${i + 1}. ${questions[i]}`;
+      questionDiv.appendChild(questionText);
+
+      const sliderInput = document.createElement('input');
+
+      sliderInput.type = 'range';
+      sliderInput.min = '0';
+      sliderInput.max = '10';
+      sliderInput.value = '5';
+      sliderInput.name = `slider${i}`;
+      sliderInput.id = `slider${i}`;
+      questionDiv.appendChild(sliderInput);
+
+      const sliderValueDisplay = document.createElement('span');
+      sliderValueDisplay.id = `sliderValue${i}`;
+      sliderValueDisplay.textContent = '5';
+      questionDiv.appendChild(sliderValueDisplay);
+      sliderInput.addEventListener("input", function () {
+        document.getElementById(`sliderValue${i}`).textContent = this.value;
+      });
+      questionsContainer.appendChild(questionDiv);
+    } 
+  </script>
+
+
+</body>
+{% endblock %}
+
+</html>

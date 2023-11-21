@@ -1,11 +1,13 @@
 # auth.py
-import os
 from flask import Blueprint, render_template, redirect, url_for, request, flash, session
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import login_user, logout_user, login_required
 from .models import User
 from . import db
-from .parser import parser
+from functools import wraps
+from flask import make_response
+import random
+
 
 auth = Blueprint('auth', __name__)
 
@@ -32,10 +34,10 @@ def login_post():
 
     # if the above check passes, then we know the user has the right credentials
     login_user(user, remember=remember)
-
-    str_username = parser(user.email)
-    session["username"] = str_username
-    return redirect(url_for('main.view'))
+    
+    str_username = str(user.email)
+    session["email"] = "".join(random.sample(str_username,len(str_username)))
+    return redirect(url_for('main.survey'))
 
 
 @auth.route('/signup')
@@ -52,7 +54,7 @@ def signup_post():
 
     # if this returns a user, then the email already exists in database
     user = User.query.filter_by(email=email).first()
-
+    
     if user:  # if a user is found, we want to redirect back to signup page so user can try again
         flash('Email address already exists')
         return redirect(url_for('auth.signup'))
@@ -64,8 +66,6 @@ def signup_post():
     # add the new user to the database
     db.session.add(new_user)
     db.session.commit()
-    parsed_dirname=parser(new_user.email) 
-    os.mkdir(f"static\\users\\{parsed_dirname}")
 
     return redirect(url_for('auth.login'))
 
@@ -75,5 +75,5 @@ def signup_post():
 
 def logout():
     logout_user()
-    session.pop("username", None)
+    session.clear()
     return redirect(url_for('main.index'))

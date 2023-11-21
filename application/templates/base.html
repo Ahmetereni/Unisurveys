@@ -5,7 +5,9 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <html lang="en">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='survey.png') }}" type="image/x-icon">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Flask Auth Example</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
@@ -20,12 +22,7 @@
 
                     <div id="navbarMenuHeroA" class="navbar-menu">
                         <div class="navbar-end">
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('hay.search') }}" class="navbar-item"
-                                style="height: 100px;font-size: 40px;">
-                                Ask
-                            </a>
-                            {% endif %}
+      
 
                             {% if not current_user.is_authenticated %}
                             <a href="{{ url_for('auth.login') }}" class="navbar-item"
@@ -38,11 +35,19 @@
                             </a>
                             {% endif %}
                             {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('main.view') }}" class="navbar-item"
+                            <a href="{{ url_for('main.survey') }}" class="navbar-item"
                                 style="height: 100px;font-size: 40px;">
-                                Files
+                                Survey
                             </a>
                             {% endif %}
+
+                            {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('main.stats') }}" class="navbar-item"
+                                style="height: 100px;font-size: 40px;">
+                                Stats
+                            </a>
+                            {% endif %}
+                            
                             {% if current_user.is_authenticated %}
                             <a href="{{ url_for('auth.logout') }}" class="navbar-item"
                                 style="height: 100px;font-size: 40px;">

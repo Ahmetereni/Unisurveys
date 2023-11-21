@@ -35,7 +35,6 @@ def create_app():
     from .main import main as main_blueprint
     main.register_blueprint(main_blueprint)
     
-    from .hay import hay as hay_blueprint
-    main.register_blueprint(hay_blueprint)
+
 
     return main
