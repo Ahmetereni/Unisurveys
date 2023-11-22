@@ -1,29 +1,35 @@
-<!-- templates/base.html -->
-
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
-    <html lang="en">
-    <link rel="shortcut icon" href="{{ url_for('static', filename='survey.png') }}" type="image/x-icon">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Flask Auth Example</title>
+    <title>Uni Surveys</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" />
+
+
 </head>
 
-<body>
+<body style="background-color: red;">
     <section class="hero is-primary is-fullheight">
 
         <div class="hero-head">
             <nav class="navbar">
                 <div class="container">
+                    <div class="navbar-brand">
+                        <!-- Here, you can add your logo or brand name -->
+
+                        <!-- Hamburger menu -->
+                        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                            <span aria-hidden="true"></span>
+                        </a>
+                    </div>
 
                     <div id="navbarMenuHeroA" class="navbar-menu">
                         <div class="navbar-end">
-
-
                             {% if not current_user.is_authenticated %}
                             <a href="{{ url_for('auth.login') }}" class="navbar-item"
                                 style="height: 100px;font-size: 40px;">
@@ -35,20 +41,16 @@
                             </a>
                             {% endif %}
                             {% if current_user.is_authenticated %}
+                            <a href="{{ url_for('main.stats') }}" class="navbar-item"
+                                style="height: 100px;font-size: 40px;">
+                                Statistics
+                            </a>
+
                             <a href="{{ url_for('main.survey') }}" class="navbar-item"
                                 style="height: 100px;font-size: 40px;">
                                 Survey
                             </a>
-                            {% endif %}
 
-                            {% if current_user.is_authenticated %}
-                            <a href="{{ url_for('main.stats') }}" class="navbar-item"
-                                style="height: 100px;font-size: 40px;">
-                                Stats
-                            </a>
-                            {% endif %}
-
-                            {% if current_user.is_authenticated %}
                             <a href="{{ url_for('auth.logout') }}" class="navbar-item"
                                 style="height: 100px;font-size: 40px;">
                                 Logout
@@ -65,11 +67,23 @@
         <div class="hero-body">
             <div class="container has-text-centered">
                 {% block content %}
+
                 {% endblock %}
             </div>
         </div>
     </section>
-</body>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const burger = document.querySelector('.navbar-burger');
+            const menu = document.querySelector('#navbarMenuHeroA');
+
+            burger.addEventListener('click', () => {
+                burger.classList.toggle('is-active');
+                menu.classList.toggle('is-active');
+            });
+        });
+    </script>
+</body>
 
 </html>

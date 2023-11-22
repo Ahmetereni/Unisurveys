@@ -29,201 +29,124 @@ function updateUniversityDropdown() {
 	})
 }
 
+
 function populateDepartmentDropdown() {
 	let a = document.getElementById("departmentSelect");
-	[{
-		name: "Aerospace Engineering"
-	}, {
-		name: "Anthropology"
-	}, {
-		name: "Architecture"
-	}, {
-		name: "Art History"
-	}, {
-		name: "Biology"
-	}, {
-		name: "Biomedical Engineering"
-	}, {
-		name: "Business Administration"
-	}, {
-		name: "Chemical Engineering"
-	}, {
-		name: "Chemistry"
-	}, {
-		name: "Civil Engineering"
-	}, {
-		name: "Classics"
-	}, {
-		name: "Computer Engineering"
-	}, {
-		name: "Computer Science"
-	}, {
-		name: "Criminology"
-	}, {
-		name: "Economics"
-	}, {
-		name: "Education"
-	}, {
-		name: "Electrical Engineering"
-	}, {
-		name: "English Literature"
-	}, {
-		name: "Environmental Engineering"
-	}, {
-		name: "Environmental Science"
-	}, {
-		name: "Finance"
-	}, {
-		name: "Fine Arts"
-	}, {
-		name: "Geography"
-	}, {
-		name: "Geology"
-	}, {
-		name: "History"
-	}, {
-		name: "Human Resources"
-	}, {
-		name: "International Relations"
-	}, {
-		name: "Law"
-	}, {
-		name: "Marketing"
-	}, {
-		name: "Mathematics"
-	}, {
-		name: "Mechanical Engineering"
-	}, {
-		name: "Medicine"
-	}, {
-		name: "Music"
-	}, {
-		name: "Nursing"
-	}, {
-		name: "Philosophy"
-	}, {
-		name: "Physics"
-	}, {
-		name: "Political Science"
-	}, {
-		name: "Psychology"
-	}, {
-		name: "Public Health"
-	}, {
-		name: "Sociology"
-	}, {
-		name: "Software Engineering"
-	}, {
-		name: "Theatre and Performing Arts"
-	}].forEach(e => {
-		let n = document.createElement("option");
-		n.text = e.name, n.value = e.name, a.add(n)
-	})
-}
-function populateDepartmentDropdown() {
-	let a = document.getElementById("departmentSelect");
-	[{
-		name: "Aerospace Engineering"
-	}, {
-		name: "Anthropology"
-	}, {
-		name: "Architecture"
-	}, {
-		name: "Art History"
-	}, {
-		name: "Biology"
-	}, {
-		name: "Biomedical Engineering"
-	}, {
-		name: "Business Administration"
-	}, {
-		name: "Chemical Engineering"
-	}, {
-		name: "Chemistry"
-	}, {
-		name: "Civil Engineering"
-	}, {
-		name: "Classics"
-	}, {
-		name: "Computer Engineering"
-	}, {
-		name: "Computer Science"
-	}, {
-		name: "Criminology"
-	}, {
-		name: "Economics"
-	}, {
-		name: "Education"
-	}, {
-		name: "Electrical Engineering"
-	}, {
-		name: "English Literature"
-	}, {
-		name: "Environmental Engineering"
-	}, {
-		name: "Environmental Science"
-	}, {
-		name: "Finance"
-	}, {
-		name: "Fine Arts"
-	}, {
-		name: "Geography"
-	}, {
-		name: "Geology"
-	}, {
-		name: "History"
-	}, {
-		name: "Human Resources"
-	}, {
-		name: "International Relations"
-	}, {
-		name: "Law"
-	}, {
-		name: "Marketing"
-	}, {
-		name: "Mathematics"
-	}, {
-		name: "Mechanical Engineering"
-	}, {
-		name: "Medicine"
-	}, {
-		name: "Music"
-	}, {
-		name: "Nursing"
-	}, {
-		name: "Philosophy"
-	}, {
-		name: "Physics"
-	}, {
-		name: "Political Science"
-	}, {
-		name: "Psychology"
-	}, {
-		name: "Public Health"
-	}, {
-		name: "Sociology"
-	}, {
-		name: "Software Engineering"
-	}, {
-		name: "Theatre and Performing Arts"
-	}].forEach(e => {
+	[
+
+		{
+			name: "Aerospace Engineering"
+		},
+		{
+			name: "Anthropology"
+		}, {
+			name: "Architecture"
+		}, {
+			name: "Art History"
+		}, {
+			name: "Biology"
+		}, {
+			name: "Biomedical Engineering"
+		}, {
+			name: "Business Administration"
+		}, {
+			name: "Chemical Engineering"
+		}, {
+			name: "Chemistry"
+		}, {
+			name: "Civil Engineering"
+		}, {
+			name: "Classics"
+		}, {
+			name: "Computer Engineering"
+		}, {
+			name: "Computer Science"
+		}, {
+			name: "Criminology"
+		}, {
+			name: "Economics"
+		}, {
+			name: "Education"
+		}, {
+			name: "Electrical Engineering"
+		}, {
+			name: "English Literature"
+		}, {
+			name: "Environmental Engineering"
+		}, {
+			name: "Environmental Science"
+		}, {
+			name: "Finance"
+		}, {
+			name: "Fine Arts"
+		}, {
+			name: "Geography"
+		}, {
+			name: "Geology"
+		}, {
+			name: "History"
+		}, {
+			name: "Human Resources"
+		}, {
+			name: "International Relations"
+		}, {
+			name: "Law"
+		}, {
+			name: "Marketing"
+		}, {
+			name: "Mathematics"
+		}, {
+			name: "Mechanical Engineering"
+		}, {
+			name: "Medicine"
+		}, {
+			name: "Music"
+		}, {
+			name: "Nursing"
+		}, {
+			name: "Philosophy"
+		}, {
+			name: "Physics"
+		}, {
+			name: "Political Science"
+		}, {
+			name: "Psychology"
+		},
+		{
+			name: "Public Health"
+		},
+		{
+			name: "Robotics"
+		},
+		{
+			name: "Sociology"
+		}, {
+			name: "Software Engineering"
+		}, {
+			name: "Theatre and Performing Arts"
+		},
+		{
+			name: "Not in List"
+		},
+
+	].forEach(e => {
 		let n = document.createElement("option");
 		n.text = e.name, n.value = e.name, a.add(n)
 	})
 }
 
-const universityLevels=["Freshman (1st Year Undergraduate)","Sophomore (2nd Year Undergraduate)","Junior (3rd Year Undergraduate)","Senior (4th Year Undergraduate)","Master's Student (Graduate Level)","Doctoral Candidate/Ph.D. Student (Graduate Level, pre-dissertation)","Postdoctoral Fellow (Post-Ph.D. Research and Training)"];
+const universityLevels = ["Freshman (1st Year Undergraduate)", "Sophomore (2nd Year Undergraduate)", "Junior (3rd Year Undergraduate)", "Senior (4th Year Undergraduate)", "Master's Student (Graduate Level)", "Doctoral Candidate/Ph.D. Student (Graduate Level, pre-dissertation)", "Postdoctoral Fellow (Post-Ph.D. Research and Training)"];
 function populateYearDropdown() {
-    let yearSelect = document.getElementById("yearSelect");
-    universityLevels.forEach(level => {
-        let option = document.createElement("option");
-        option.text = level;
-        option.value = level;
-        yearSelect.add(option);
-    });
+	let yearSelect = document.getElementById("yearSelect");
+	universityLevels.forEach(level => {
+		let option = document.createElement("option");
+		option.text = level;
+		option.value = level;
+		yearSelect.add(option);
+	});
 }
-window.onload = function() {
-	fetchData(), 
-    populateDepartmentDropdown(),
-    populateYearDropdown()
+window.onload = function () {
+	fetchData(),
+		populateDepartmentDropdown(),
+		populateYearDropdown()
 };

@@ -1,23 +1,41 @@
-<!-- templates/stats.html -->
-
 {% extends "base.html" %}
 
 {% block content %}
 <h1 class="title">
-    Thank You For Voting 
+    University Ratings
 </h1>
-<h1 class="title">👏👏👏</h1>
 <br>
 
-<h2 class="subtitle">
-    You can update your vote anytime
-</h2>
-<h2 class="subtitle">
-    Statistics are coming after first 1000 voters voted. 
-</h2>
-<br>
-<h2 class="subtitle">
-    Stay tuned!
-</h2>
+
+<!-- Bulma Box with Rounded Corners -->
+<div class="box is-rounded">
+    <section class="hero is-info is-small">
+        <div class="hero-body">
+          <p class="title">
+            Total: {{ total_users }}
+          </p>
+        </div>
+      </section>
+    <div class="table-container">
+        <table class="table is-striped is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                    <th>University</th>
+                    <th>Average Rating</th>
+                    <th>Voters</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for university in universities %}
+                <tr>
+                    <td>{{ university.name }}</td>
+                    <td>{{ university.average_rating }}</td>
+                    <td>{{ university.user_count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
 
 {% endblock %}

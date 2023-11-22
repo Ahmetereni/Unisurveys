@@ -6,7 +6,6 @@
   <meta charset="UTF-8">
   <title>Select University</title>
   <script src="{{ url_for('static', filename='js/Uniparser.js')}}"></script>
-  <script src="{{ url_for('static', filename='js/QuestionPopulator.js')}}"></script>
 
   <script src="{{ url_for('static', filename='css/style.css')}}"></script>
 </head>
@@ -16,7 +15,7 @@
     <div class="columns is-centered">
       <div class="column is-half">
         <div class="field">
-          <label class="card-header" style="box-shadow: none;"  for="countrySelect">Select Country:</label>
+          <label class="card-header" style="box-shadow: none;" for="countrySelect">Select Country:</label>
           <div class="control">
             <div class="select is-fullwidth">
               <select id="countrySelect" name="countrySelect" onchange="updateUniversityDropdown()">
@@ -27,7 +26,7 @@
         </div>
 
         <div class="field">
-          <label class="card-header" style="box-shadow: none;"  for="universitySelect">Select University:</label>
+          <label class="card-header" style="box-shadow: none;" for="universitySelect">Select University:</label>
           <div class="control">
             <div class="select is-fullwidth">
               <select id="universitySelect" name="universitySelect">
@@ -37,7 +36,7 @@
           </div>
         </div>
         <div class="field">
-          <label class="card-header" style="box-shadow: none;"  for="departmentSelect">Select Department:</label>
+          <label class="card-header" style="box-shadow: none;" for="departmentSelect">Select Department:</label>
           <div class="control">
             <div class="select is-fullwidth">
               <select id="departmentSelect" name="departmentSelect">
@@ -47,7 +46,7 @@
           </div>
         </div>
         <div class="field">
-          <label class="card-header" style="box-shadow: none;"  for="yearSelect">Select Department:</label>
+          <label class="card-header" style="box-shadow: none;" for="yearSelect">Select Department:</label>
           <div class="control">
             <div class="select is-fullwidth">
               <select id="yearSelect" name="yearSelect">
@@ -62,7 +61,7 @@
     <div id="questions-container">
       <!-- JavaScript will populate this -->
     </div>
-<br>
+    <br>
     <input class="button is-block is-info is-large is-fullwidth" type=submit value=Submit>
 
   </form>
@@ -86,14 +85,19 @@
       sliderInput.type = 'range';
       sliderInput.min = '0';
       sliderInput.max = '10';
-      sliderInput.value = '5';
+      sliderInput.step='0.5'
+      sliderInput.value = '0';
       sliderInput.name = `slider${i}`;
       sliderInput.id = `slider${i}`;
       questionDiv.appendChild(sliderInput);
 
+      const mybreak=document.createElement('br')
+      questionDiv.appendChild(mybreak)
+
+
       const sliderValueDisplay = document.createElement('span');
       sliderValueDisplay.id = `sliderValue${i}`;
-      sliderValueDisplay.textContent = '5';
+      sliderValueDisplay.textContent = '0';
       questionDiv.appendChild(sliderValueDisplay);
       sliderInput.addEventListener("input", function () {
         document.getElementById(`sliderValue${i}`).textContent = this.value;
